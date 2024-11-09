@@ -66,29 +66,33 @@
                 </div>
             </div>
 
-            <!-- Net Banking -->
-            <div class="payment-method">
-                <label>
-                    <input type="radio" name="payment" value="net-banking" onclick="showPaymentDetails('net-banking')">
-                    Net Banking
-                </label>
-                <div id="net-banking-details" class="payment-details">
-                    <label for="bank">Select Your Bank:</label>
-                    <select id="bank" required>
-                        <option value="">Select Bank</option>
-                        <option value="sbi">State Bank of India</option>
-                        <option value="hdfc">HDFC Bank</option>
-                        <option value="icici">ICICI Bank</option>
-                        <option value="axis">Axis Bank</option>
-                        <option value="pnb">Punjab National Bank</option>
-                        <option value="bob">Bank of Baroda</option>
-                        <option value="canara">Canara Bank</option>
-                        <option value="yes-bank">Yes Bank</option>
-                        <option value="kotak">Kotak Mahindra Bank</option>
-                    </select>
-                    <p>You will be redirected to your bank's login page to complete the payment.</p>
-                </div>
-            </div>
+            <!-- Net Banking Payment -->
+<div class="payment-method">
+    <label>
+        <input type="radio" name="payment" value="net-banking" onclick="showPaymentDetails('net-banking')">
+        Net Banking
+    </label>
+    <div id="net-banking-details" class="payment-details">
+        <label for="bank">Select Bank:</label>
+        <select id="bank" onchange="displayNetBankingSteps()">
+            <option value="">--Select Bank--</option>
+            <option value="SBI">State Bank of India</option>
+            <option value="ICICI">ICICI Bank</option>
+            <option value="HDFC">HDFC Bank</option>
+            <option value="AXIS">Axis Bank</option>
+        </select>
+        <div id="net-banking-steps" style="display: none;">
+            <label for="account-number">Account Number:</label>
+            <input type="text" id="account-number" placeholder="Enter your account number">
+            
+            <label for="otp">OTP (One-Time Password):</label>
+            <input type="text" id="otp" placeholder="Enter OTP sent to your phone">
+
+            <button type="button" onclick="processNetBanking()">Confirm Payment</button>
+        </div>
+    </div>
+</div>
+
 
             <button type="submit" class="submit-btn">Donate Now</button>
         </form>
