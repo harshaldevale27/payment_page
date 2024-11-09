@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donation Payment Page</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="payment-page">
+        <h2>Make a Donation</h2>
+        <p>Please choose a payment method and enter your details to support our cause.</p>
+
+        <form id="paymentForm">
+            <!-- Amount -->
+            <label for="amount">Donation Amount (INR):</label>
+            <input type="number" id="amount" name="amount" required min="1" placeholder="Enter amount in ₹">
+
+            <!--Methods -->
+            <h3>Select Payment Method</h3>
+
+            <!-- Credit Card-->
+            <div class="payment-method">
+                <label>
+                    <input type="radio" name="payment" value="credit-card" required onclick="showPaymentDetails('credit-card')">
+                    Credit Card
+                </label>
+                <div id="credit-card-details" class="payment-details">
+                    <input type="text" id="cc-name" placeholder="Cardholder Name" required>
+                    <input type="text" id="cc-number" placeholder="Card Number" required maxlength="16">
+                    <input type="text" id="cc-exp" placeholder="MM/YY" required maxlength="5">
+                    <input type="text" id="cc-cvv" placeholder="CVV" required maxlength="3">
+                </div>
+            </div>
+
+            <!-- PayPal -->
+            <div class="payment-method">
+                <label>
+                    <input type="radio" name="payment" value="paypal" onclick="showPaymentDetails('paypal')">
+                    PayPal
+                </label>
+                <div id="paypal-details" class="payment-details">
+                    <p>Click the button below to be redirected to PayPal to complete your donation.</p>
+                    <button type="button" class="paypal-btn" onclick="redirectToPayPal()">Donate with PayPal</button>
+                </div>
+            </div>
+
+
+            <!-- UPI -->
+            <div class="payment-method">
+                <label>
+                    <input type="radio" name="payment" value="upi" onclick="showPaymentDetails('upi')">
+                    UPI
+                </label>
+                <div id="upi-details" class="payment-details">
+                    <p>Select your UPI method or enter your UPI ID below:</p>
+                    <select id="upi-method">
+                        <option value="">Select UPI App</option>
+                        <option value="google-pay">Google Pay</option>
+                        <option value="phonepe">PhonePe</option>
+                        <option value="paytm">Paytm</option>
+                        <option value="bhim">BHIM</option>
+                        <option value="other">Other</option>
+                    </select>
+                    <input type="text" id="upi-id" placeholder="Enter UPI ID (e.g., yourname@bank)" required>
+                </div>
+            </div>
+
+            <!-- Net Banking -->
+            <div class="payment-method">
+                <label>
+                    <input type="radio" name="payment" value="net-banking" onclick="showPaymentDetails('net-banking')">
+                    Net Banking
+                </label>
+                <div id="net-banking-details" class="payment-details">
+                    <label for="bank">Select Your Bank:</label>
+                    <select id="bank" required>
+                        <option value="">Select Bank</option>
+                        <option value="sbi">State Bank of India</option>
+                        <option value="hdfc">HDFC Bank</option>
+                        <option value="icici">ICICI Bank</option>
+                        <option value="axis">Axis Bank</option>
+                        <option value="pnb">Punjab National Bank</option>
+                        <option value="bob">Bank of Baroda</option>
+                        <option value="canara">Canara Bank</option>
+                        <option value="yes-bank">Yes Bank</option>
+                        <option value="kotak">Kotak Mahindra Bank</option>
+                    </select>
+                    <p>You will be redirected to your bank's login page to complete the payment.</p>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Donate Now</button>
+        </form>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
